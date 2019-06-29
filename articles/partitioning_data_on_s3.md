@@ -58,6 +58,30 @@
         ```
         aws s3 cp s3://gdelt-open-data/events/20181231.export.csv s3:// <yournamehere>-gdelt-open-data/events/year=2018/month=12/day=31/export.csv
         ```
-
+    1. Let's now do 2019.
+        ```
+        aws s3 cp s3://gdelt-open-data/events/20190108.export.csv s3:// <yournamehere>-gdelt-open-data/events/year=2019/month=01/day=08/export.csv
+        ```
+        ```
+        aws s3 cp s3://gdelt-open-data/events/20190122.export.csv s3:// <yournamehere>-gdelt-open-data/events/year=2019/month=01/day=22/export.csv
+        ```
+        ```
+        aws s3 cp s3://gdelt-open-data/events/20190310.export.csv s3:// <yournamehere>-gdelt-open-data/events/year=2019/month=03/day=10/export.csv
+        ```
+        ```
+        aws s3 cp s3://gdelt-open-data/events/20190320.export.csv s3:// <yournamehere>-gdelt-open-data/events/year=2019/month=03/day=20/export.csv
+        ```
+        ```
+        aws s3 cp s3://gdelt-open-data/events/20190501.export.csv s3:// <yournamehere>-gdelt-open-data/events/year=2019/month=05/day=01/export.csv
+        ```
+        ```
+        aws s3 cp s3://gdelt-open-data/events/20190531.export.csv s3:// <yournamehere>-gdelt-open-data/events/year=2019/month=05/day=31/export.csv
+        ```
+        ```
+        aws s3 cp s3://gdelt-open-data/events/20190610.export.csv s3:// <yournamehere>-gdelt-open-data/events/year=2019/month=06/day=10/export.csv
+        ```
+        ```
+        aws s3 cp s3://gdelt-open-data/events/20190621.export.csv s3:// <yournamehere>-gdelt-open-data/events/year=2019/month=06/day=21/export.csv
+        ```
 
 We now have data stored in our S3 bucket with partitioning enabled.
