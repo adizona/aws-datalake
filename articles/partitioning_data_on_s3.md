@@ -1,5 +1,7 @@
 # Partitioning Data on S3
 
+Storing data on S3 is one of the primary tasks as part of building a data lake on AWS.
+
 1. Start by creating an S3 bucket in your AWS account. I would recommend to create it in us-east-1 since the source GDELT data is in us-east-1 and would be fast to copy over.
     ```
     aws s3 mb s3://<yournamehere>-gdelt-open-data --region us-east-1
