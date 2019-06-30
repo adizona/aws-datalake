@@ -4,6 +4,10 @@ Storing data on S3 is one of the primary tasks as part of building a data lake o
 
 To better understand this, let's use a real world example. The [**Global Database of Events, Language and Tone (GDELT)**](https://www.gdeltproject.org/) project monitors the world's broadcast, print, and web news from nearly every corner of every country in over 100 languages and identifies the people, locations, organizations, counts, themes, sources, emotions, quotes, images and events driving our global society every second of every day.
 
+## Exploring GDELT Data
+
+GDELT generates a CSV file everyday and writes it to an S3 bucket. The details can be found [here](https://registry.opendata.aws/gdelt/). Let's now explore this data using AWS CLI. The bucket is in us-east-1 and is publicly available to read. Your CLI credentials will need at least S3 Read access. I recommend using the AWS-managed AmazonS3ReadOnlyAccess policy.
+
 1. Start by creating an S3 bucket in your AWS account. I would recommend to create it in us-east-1 since the source GDELT data is in us-east-1 and would be fast to copy over.
     ```
     aws s3 mb s3://<yournamehere>-gdelt-open-data --region us-east-1
