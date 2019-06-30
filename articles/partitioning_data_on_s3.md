@@ -8,8 +8,8 @@
 Year | Month | Day
 ------------ | ------------- | -------------
 2017 | May | 01
-| June | 20
-| August | 15
+    | June | 20
+    | August | 15
 2018 | September | 23
 
 
