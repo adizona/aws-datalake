@@ -1,24 +1,5 @@
 # Partitioning Data on S3
 
-
-
-
-## Partition Table
-
-Year | Month | Day
------------- | ------------- | -------------
-2017 | February | 02
-2017 | April | 01
-2017 | April | 13
-2017 | July | 04
-2017 | August | 21
-2017 | October | 01
-2017 | October | 31
-2017 | December | 01
-2018 | September | 23
-
-
-
 1. Start by creating an S3 bucket in your AWS account. I would recommend to create it in us-east-1 since the source GDELT data is in us-east-1 and would be fast to copy over.
     ```
     aws s3 mb s3://<yournamehere>-gdelt-open-data --region us-east-1
@@ -101,4 +82,18 @@ Year | Month | Day
         aws s3 cp s3://gdelt-open-data/events/20190621.export.csv s3://<yournamehere>-gdelt-open-data/year=2019/month=06/day=21/export.csv
         ```
 
-We now have data stored in our S3 bucket with partitioning enabled.
+We now have data stored in our S3 bucket with partitioning enabled as indicated by the table below.
+
+## Partition Table
+
+Year | Month | Day
+------------ | ------------- | -------------
+2017 | February | 02
+2017 | April | 01
+2017 | April | 13
+2017 | July | 04
+2017 | August | 21
+2017 | October | 01
+2017 | October | 31
+2017 | December | 01
+2018 | September | 23
