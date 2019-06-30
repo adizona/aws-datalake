@@ -8,6 +8,18 @@ To better understand this, let's use a real world example. The [**Global Databas
 
 GDELT generates a CSV file everyday and writes it to an S3 bucket. The details can be found [here](https://registry.opendata.aws/gdelt/). Let's now explore this data using AWS CLI. The bucket is in us-east-1 and is publicly available to read. Your CLI credentials will need at least S3 Read access. I recommend using the AWS-managed AmazonS3ReadOnlyAccess policy.
 
+### List root contents
+1. Run the following to list all the contents of the bucket at root.
+    ```
+        aws s3 ls s3://gdelt-open-data
+    ```
+    You will notice that there are two folders events/ and v2/.
+1. Let's ignore v2/ and further explore events/.
+    ```
+        aws s3 ls s3://gdelt-open-data/events/
+    ```
+    You will notice that there are several csv files with a date stamp in the file name.
+
 ## Store GDELT Data with Partitioning
 
 ### Create an S3 bucket
