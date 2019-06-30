@@ -30,9 +30,6 @@
         ```
         aws s3 cp s3://gdelt-open-data/events/20171201.export.csv s3://<yournamehere>-gdelt-open-data/year=2017/month=12/day=01/export.csv
         ```
-        ```
-        aws s3 cp s3://gdelt-open-data/events/20171201.export.csv s3://<yournamehere>-gdelt-open-data/year=2017/month=12/day=01/export.csv
-        ```
     1. Let's now copy data from 2018.
         ```
         aws s3 cp s3://gdelt-open-data/events/20180101.export.csv s3://<yournamehere>-gdelt-open-data/year=2018/month=01/day=01/export.csv
@@ -76,7 +73,8 @@
         ```
         ```
         aws s3 cp s3://gdelt-open-data/events/20190531.export.csv s3://<yournamehere>-gdelt-open-data/year=2019/month=05/day=31/export.csv
-        ```
+        ```eiifcckjbeikijfbvidenhvbkukfghrjkrkgvbrftdnu
+        
         ```
         aws s3 cp s3://gdelt-open-data/events/20190610.export.csv s3://<yournamehere>-gdelt-open-data/year=2019/month=06/day=10/export.csv
         ```
