@@ -1,5 +1,13 @@
 # Partitioning Data on S3
 
+
+Year | Month | Day
+------------ | ------------- | -------------
+2017 | May | 01
+2018 | September | 23
+
+
+
 1. Start by creating an S3 bucket in your AWS account. I would recommend to create it in us-east-1 since the source GDELT data is in us-east-1 and would be fast to copy over.
     ```
     aws s3 mb s3://<yournamehere>-gdelt-open-data --region us-east-1
