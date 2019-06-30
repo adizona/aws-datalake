@@ -13,12 +13,12 @@ GDELT generates a CSV file everyday and writes it to an S3 bucket. The details c
     ```
         aws s3 ls s3://gdelt-open-data
     ```
-    You will notice that there are two folders events/ and v2/.
+    You will notice that there are two sub-folders - events/ and v2/.
 1. Let's ignore v2/ and further explore events/.
     ```
         aws s3 ls s3://gdelt-open-data/events/
     ```
-    You will notice that there are several csv files with a date stamp in the file name.
+    You will notice that there are several csv files with a date stamp in the file name. 
 
 ## Store GDELT Data with Partitioning
 
