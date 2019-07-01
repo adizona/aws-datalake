@@ -18,4 +18,12 @@ For more information on AWS Glue Crawlers, please visit [here](https://docs.aws.
 
 ## Defining a Crawler using CloudFormation
 
-We will use the CloudFormation template found [here](../files/templates/glue_crawler_gdelt.json) to define our Crawler and all its supporting pieces.
+We will use the CloudFormation template found [here](../files/templates/glue_crawler_gdelt.json) to define our Crawler and all its supporting pieces. Let's now investigate each resource defined in the template.
+
+### AWS Glue Classifiers
+
+One of the first actions a Crawler takes, as it interrogates a data store, is to classify the data to determine the format, schema, and all associated properties. AWS Glue uses classifiers for this task. A classifier tries to recognize the format of the data. The classifier then returns a certainty number to indicate how certain the format recognition was.
+
+AWS Glue provides a set of built-in classifiers, but we can also create custom classifiers. AWS Glue invokes custom classifiers first, in the order that we specify in our crawler definition. Depending on the results that are returned from custom classifiers, AWS Glue might also invoke built-in classifiers. If a classifier returns certainty=1.0 during processing, it indicates that it's 100 percent certain that it can create the correct schema. AWS Glue then uses the output of that classifier.
+
+For more information on AWS Glue Classifiers, please visit [here](https://docs.aws.amazon.com/glue/latest/dg/add-classifier.html).
