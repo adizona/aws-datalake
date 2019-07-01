@@ -40,3 +40,8 @@ We will use [AWS::Glue::Classifier](https://docs.aws.amazon.com/AWSCloudFormatio
 
 1.  **Name:** A unique name for our classifier. We will use **classifier-gdelt-csv**.
 1.  **Delimiter:** We will use **\t**. This will indicate that the columns in the data are tab-delimited.
+1.  **QuoteSymbol:** We will use **"** (Double Quotes).
+1.  **ContainsHeader:** We will use "ABSENT" and define our own.
+1.  **Header:** We will use this field to define an array of column names defined by GDELT [here](http://data.gdeltproject.org/documentation/GDELT-Data_Format_Codebook.pdf). The only caveat here is that the column names used here must be unique and must not conflict with the partition names. The partition names we defined in the previous article are year, month and day. For this reason, we will use yearmonthday, yearmonth and yearonly as the column names for the different date fields to avoid conflict.
+1.  **DisableValueTrimming:** We will use **true**.
+1.  **AllowSingleColumn:** We will use **false**.
