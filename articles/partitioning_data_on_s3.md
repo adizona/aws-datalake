@@ -1,35 +1,37 @@
 # Partitioning Data on S3
 
-Storing data on S3 is one of the primary tasks as part of building a data lake on AWS. However, partitioning the data at the time of storing it is key to improving performance and reducing costs at the time of running queries on it using Amazon Athena. Athena leverages Hive for [partitioning](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterPartition) data. By partitioning in the right way, you can restrict the amount of data scanned by each query.
+Storing data on S3 is one of the primary tasks as part of building a data lake on AWS. However, partitioning the data at the time of storing it is key to improving performance and reducing costs at the time of running queries on it using Amazon Athena. Athena leverages Hive for [partitioning](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterPartition) data. By partitioning in the right way, we can restrict the amount of data scanned by each query.
 
 To better understand this, let's use a real world example. The [**Global Database of Events, Language and Tone (GDELT)**](https://www.gdeltproject.org/) project monitors the world's broadcast, print, and web news from nearly every corner of every country in over 100 languages and identifies the people, locations, organizations, counts, themes, sources, emotions, quotes, images and events driving our global society every second of every day.
 
 ## Exploring GDELT Data
 
-GDELT generates a CSV file everyday and writes it to an S3 bucket. The details can be found [here](https://registry.opendata.aws/gdelt/). Let's now explore this data using AWS CLI. The bucket is in us-east-1 and is publicly available to read. Your CLI credentials will need at least S3 Read access. I recommend using the AWS-managed AmazonS3ReadOnlyAccess policy.
+GDELT generates a CSV file everyday and writes it to an S3 bucket. The details can be found [here](https://registry.opendata.aws/gdelt/). Let's now explore this data using AWS CLI. The bucket is in us-east-1 and is publicly available to read. Our CLI credentials will need at least S3 Read access. I recommend using the AWS-managed AmazonS3ReadOnlyAccess policy.
 
 ### List GDELT contents
 1. Run the following to list all the contents of the bucket at root.
     ```
         aws s3 ls s3://gdelt-open-data
     ```
-    You will notice that there are two sub-folders - events/ and v2/.
+    We will notice that there are two sub-folders - events/ and v2/.
 1. Let's ignore v2/ and further explore events/.
     ```
         aws s3 ls s3://gdelt-open-data/events/
     ```
-    You will notice that there are several csv files with a date stamp in the file name. Each csv file has columns containing the year, month and date information as well. However, there is no partitioning enabled. When a query is run against this dateset in Athena with a WHERE clause filtering the data to say year 2018, the entire dataset has to be scanned to determine records from 2018. As the dataset grows, this can become very expensive and time-consuming. Let us now see how to store this data in one of your own buckets with partitioning enabled.
+    We will notice that there are several csv files with a date stamp in the file name. Each csv file has columns containing the year, month and date information as well. However, there is no partitioning enabled. When a query is run against this dateset in Athena with a WHERE clause filtering the data to say year 2018, the entire dataset has to be scanned to determine records from 2018. As the dataset grows, this can become very expensive and time-consuming. Let us now see how to store this data in one of our own buckets with partitioning enabled.
 
 
 ## Store GDELT Data with Partitioning
 
+We will use GDELT data to create our own data lake on Amazon S3 but we will do it with partitioning enabled. To do this, all we have to do is include one or more partition identifiers in the S3 path. Including multiple such identifiers will result in composite partitioning similar to composite indexes in a regular database. We will implement composite partitioning using year, month and day. To understand it better, let's do it ourselves.
+
 ### Create an S3 bucket
-Start by creating an S3 bucket in your AWS account. I recommend creating it in us-east-1 since the source GDELT data is in us-east-1 and will be faster to copy it if both the source and destination buckets are in the same region.
+Let us sstart by creating an S3 bucket in our own AWS account. I recommend creating it in us-east-1 since the source GDELT data is in us-east-1 and will be faster to copy it if both the source and destination buckets are in the same region.
 ```
 aws s3 mb s3://<yournamehere>-gdelt-open-data --region us-east-1
 ```
 ### Copy GDELT Data
-Copy multiple randomly selected files from the publicly available gdelt-open-data bucket to the newly created bucket in your AWS account. Modify the destination path to include partitioning information.
+Copy multiple randomly selected files from the publicly available gdelt-open-data bucket to the newly created bucket above. Modify the destination path to include partitioning information.
 
 1. Let's start with data from 2017.
     ```
@@ -136,3 +138,5 @@ Year | Month | Day
 2019 | May | 31
 2019 | June | 10
 2019 | June | 21
+
+Next, we will learn how to crawl the data we copied to our very own data lake using AWS Glue.
