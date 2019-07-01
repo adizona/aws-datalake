@@ -36,8 +36,7 @@ For our example, we will define a Custom classifier so that we can provide the c
 
 #### Define a custom Glue CSV classifier resource
 
-We will use AWS::Glue::Classifier resource type to define our CSV classifier.
+We will use [AWS::Glue::Classifier](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-classifier.html) resource type to define our CSV classifier. Let's configure the [CsvClassifier](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-classifier-csvclassifier.html) object.
 
-1.  Configure the CsvClassifier object.
-    1.  **Name:** A unique name for our classifier. We will use **classifier-gdelt-csv**.
-    1.  **Delimiter:** We will use **\t**. This will indicate that the columns in the data are tab-delimited.
+1.  **Name:** A unique name for our classifier. We will use **classifier-gdelt-csv**.
+1.  **Delimiter:** We will use **\t**. This will indicate that the columns in the data are tab-delimited.
