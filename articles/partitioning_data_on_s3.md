@@ -23,7 +23,7 @@ GDELT generates a CSV file everyday and writes it to an S3 bucket. The details c
 
 ## Store GDELT Data with Partitioning
 
-We will use GDELT data to create our own data lake on Amazon S3 but we will do it with partitioning enabled. To do this, all we have to do is include one or more partition identifiers in the S3 path. Including multiple such identifiers will result in composite partitioning similar to composite indexes in a regular database. We will implement composite partitioning using year, month and day. To understand it better, let's do it ourselves.
+We will use GDELT data to create our own data lake on Amazon S3 but we will do it with partitioning enabled. To do this, all we have to do is include one or more partition identifiers in the S3 path. Including multiple such identifiers will result in composite partitioning similar to composite indexes in a regular database. We will implement composite partitioning using year, month and day. Please note that these are just examples for learning purposes and that we could choose any partition identifiers that suit our use case. To understand it better, let's do it ourselves.
 
 ### Create an S3 bucket
 Let us sstart by creating an S3 bucket in our own AWS account. I recommend creating it in us-east-1 since the source GDELT data is in us-east-1 and will be faster to copy it if both the source and destination buckets are in the same region.
