@@ -33,3 +33,11 @@ For more information on AWS Glue Classifiers, please visit [here](https://docs.a
 We can define a custom classifier and provide it to our crawler. Custom classifiers can be created using a grok pattern, an XML tag, JavaScript Object Notation (JSON), or comma-separated values (CSV). An AWS Glue crawler calls a custom classifier and if the classifier recognizes the data, it returns the classification and schema of the data to the crawler. We need to define a custom classifier if our data doesn't match any built-in classifiers, or if we want to customize the tables that are created by the crawler. 
 
 For our example, we will define a Custom classifier so that we can provide the crawler with the header of the data being crawled. This will ensure that the metadata table created in the Data Catalog has the column names as defined by GDELT [here](http://data.gdeltproject.org/documentation/GDELT-Data_Format_Codebook.pdf).
+
+#### Define a custom Glue CSV classifier resource
+
+We will use AWS::Glue::Classifier resource type to define our CSV classifier.
+
+1.  Configure the CsvClassifier object.
+    1.  **Name:** A unique name for our classifier. We will use **classifier-gdelt-csv**.
+    1.  **Delimiter:** We will use **\t**. This will indicate that the columns in the data are tab-delimited.
