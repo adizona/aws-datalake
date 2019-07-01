@@ -18,7 +18,7 @@ GDELT generates a CSV file everyday and writes it to an S3 bucket. The details c
     ```
         aws s3 ls s3://gdelt-open-data/events/
     ```
-    We will notice that there are several csv files with a date stamp in the file name. Each csv file has columns containing the year, month and date information as well. However, there is no partitioning enabled. When a query is run against this dateset in Athena with a WHERE clause filtering the data to say year 2018, the entire dataset has to be scanned to determine records from 2018. As the dataset grows, this can become very expensive and time-consuming. Let us now see how to store this data in one of our own buckets with partitioning enabled.
+    We will notice that there are several csv files with a date stamp in the file name. Each csv file has columns containing the year, month and date information as well. However, there is no partitioning enabled. When a query is run against this dateset in Athena with a WHERE clause filtering the data to say year 2018, the entire dataset has to be scanned to determine records from 2018. As the dataset grows, this can become very inefficient and expensive. Let us now see how to store this data in one of our own buckets with partitioning enabled.
 
 
 ## Store GDELT Data with Partitioning
