@@ -8,7 +8,7 @@ The AWS Glue Data Catalog is an index to the location, schema, and runtime metri
 
 ## AWS Glue Crawlers
 
-An AWS Glue crawler crawls data stores to look for commonalities and upon completion, creates (or updates, if it's not the first run) one or more tables in the AWS Glue Data Catalog. We can then use Amazon Athena to run queries against these catalog tables. We can also define ETL (Extract, Transform and Load) jobs that use the catalog tables as sources and targets.
+An AWS Glue crawler crawls data stores to look for commonalities and upon completion, creates (or updates, if it's not the first run) one or more tables in the AWS Glue Data Catalog. We can then use Amazon Athena to run queries against these catalog tables. We can also define ETL jobs that use the catalog tables as sources and targets.
 
-
+For more information on AWS Glue Crawlers, please visit [here](https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html).
 
