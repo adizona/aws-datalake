@@ -109,9 +109,8 @@ GDELT generates a CSV file everyday and writes it to an S3 bucket. The details c
         aws s3 cp s3://gdelt-open-data/events/20190621.export.csv s3://<yournamehere>-gdelt-open-data/year=2019/month=06/day=21/export.csv
         ```
 
+### Partition Table
 We now have data stored in our S3 bucket with partitioning enabled as indicated by the table below.
-
-## Partition Table
 
 Year | Month | Day
 ------------ | ------------- | -------------
