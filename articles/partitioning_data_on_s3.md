@@ -108,6 +108,7 @@ Copy multiple randomly selected files from the publicly available gdelt-open-dat
     ```
     aws s3 cp s3://gdelt-open-data/events/20190621.export.csv s3://<yournamehere>-gdelt-open-data/year=2019/month=06/day=21/export.csv
     ```
+We now have GDELT data stored in our S3 bucket with partitioning enabled. Now, while querying with Amazon Athena, only the related partitions is scanned. For example, if we need to query data from May 2018, only the partitions related to that year and month are scanned. Please note, however, that if we need to query data from May of all years, all data will be scanned. This is similar to how a composite index in a database works.
 
 ### Partition Table
 We now have data stored in our S3 bucket with partitioning enabled as indicated by the table below.
