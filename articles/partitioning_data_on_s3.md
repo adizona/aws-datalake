@@ -32,13 +32,14 @@ Start by creating an S3 bucket in your AWS account. I would recommend to create 
 ### Copy GDELT Data
 
 Copy multiple randomly selected files from the publicly available gdelt-open-data bucket to the newly created bucket in your AWS account. Modify the destination path to include partitioning information.
-    1. Let's start with data from 2017.
-        ```
-        aws s3 cp s3://gdelt-open-data/events/20170202.export.csv s3://<yournamehere>-gdelt-open-data/year=2017/month=02/day=02/export.csv
-        ```
-        ```
-        aws s3 cp s3://gdelt-open-data/events/20170401.export.csv s3://<yournamehere>-gdelt-open-data/year=2017/month=04/day=01/export.csv
-        ```
+
+1. Let's start with data from 2017.
+    ```
+    aws s3 cp s3://gdelt-open-data/events/20170202.export.csv s3://<yournamehere>-gdelt-open-data/year=2017/month=02/day=02/export.csv
+    ```
+    ```
+    aws s3 cp s3://gdelt-open-data/events/20170401.export.csv s3://<yournamehere>-gdelt-open-data/year=2017/month=04/day=01/export.csv
+    ```
         ```
         aws s3 cp s3://gdelt-open-data/events/20170413.export.csv s3://<yournamehere>-gdelt-open-data/year=2017/month=04/day=13/export.csv
         ```
