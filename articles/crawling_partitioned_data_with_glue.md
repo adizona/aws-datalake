@@ -27,3 +27,7 @@ One of the first actions a Crawler takes, as it interrogates a data store, is to
 AWS Glue provides a set of built-in classifiers, but we can also create custom classifiers. AWS Glue invokes custom classifiers first, in the order that we specify in our crawler definition. Depending on the results that are returned from custom classifiers, AWS Glue might also invoke built-in classifiers. If a classifier returns certainty=1.0 during processing, it indicates that it's 100 percent certain that it can create the correct schema. AWS Glue then uses the output of that classifier.
 
 For more information on AWS Glue Classifiers, please visit [here](https://docs.aws.amazon.com/glue/latest/dg/add-classifier.html).
+
+#### Custom Classifiers
+
+We can define a custom classifier and provide it to Crawlers to classify our data. Custom classifiers can be created using a grok pattern, an XML tag, JavaScript Object Notation (JSON), or comma-separated values (CSV). An AWS Glue crawler calls a custom classifier. If the classifier recognizes the data, it returns the classification and schema of the data to the crawler. We need to define a custom classifier if our data doesn't match any built-in classifiers, or if we want to customize the tables that are created by the crawler. For our example, we will define a Custom classifier so that we can provide the header of the data being crawled.
