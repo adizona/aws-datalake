@@ -100,8 +100,7 @@ Copy multiple randomly selected files from the publicly available gdelt-open-dat
         ```
         ```
         aws s3 cp s3://gdelt-open-data/events/20190531.export.csv s3://<yournamehere>-gdelt-open-data/year=2019/month=05/day=31/export.csv
-        ```eiifcckjbeikijfbvidenhvbkukfghrjkrkgvbrftdnu
-        
+        ```
         ```
         aws s3 cp s3://gdelt-open-data/events/20190610.export.csv s3://<yournamehere>-gdelt-open-data/year=2019/month=06/day=10/export.csv
         ```
