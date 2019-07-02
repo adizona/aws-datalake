@@ -18,7 +18,7 @@ For more information on AWS Glue Crawlers, please visit [here](https://docs.aws.
 
 ## Defining a Crawler using CloudFormation
 
-We will use the CloudFormation template found [here](../files/templates/glue_crawler_gdelt.json) to define our Crawler and all its supporting pieces. Let's now investigate each resource defined in the template.
+We will use the CloudFormation template found [here](../../files/templates/glue_crawler_gdelt.json) to define our Crawler and all its supporting pieces. Let's now investigate each resource defined in the template.
 
 ### AWS Glue Classifiers
 
