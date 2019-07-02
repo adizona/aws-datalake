@@ -114,4 +114,4 @@ We can use the State field in the returned Crawler object to determine the statu
 
 ## Next Steps
 
-Next, we will learn how to take advantage of these partitions while running queries on the dataset using Amazon Athena.
+[Next](querying_partitioned_data_with_athena.md), we will learn how to take advantage of these partitions while running queries on the dataset using Amazon Athena.

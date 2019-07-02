@@ -142,4 +142,4 @@ Year | Month | Day
 
 ## Next Steps
 
-Next, we will learn how to crawl the data we copied to our very own data lake using AWS Glue.
+[Next](crawling_partitioned_data_with_glue.md), we will learn how to crawl the data we copied to our very own data lake using AWS Glue.
