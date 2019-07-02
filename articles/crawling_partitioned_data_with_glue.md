@@ -107,7 +107,10 @@ We can check the status of our crawler by executing the following.
 ```
 aws glue get-crawler --name gdelt-crawler
 ```
-We can use the State field in the returned Crawler object to determine the status.
+We can use the State field in the returned Crawler object to determine the status. The expected values are the following:
+1.  **READY:** The crawler is currently not executing but ready to be started.
+1.  **RUNNING:** The crawler is currently executing.
+1.  **STOPPING:** The crawler has finished crawling the data and is in the process of wrapping things up.
 
 ## Next Steps
 
