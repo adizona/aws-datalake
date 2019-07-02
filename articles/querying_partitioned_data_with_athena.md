@@ -28,3 +28,11 @@ Let us get started.
 1.  On the left, let us select gdeltdb as the Database. This should show us the table (<yournamehere>_gdelt_open_data) that the Glue crawler created.
 1.  In the New Query 1 sub-window, let us type **SELECT * FROM "gdeltdb"."yournamehere_gdelt_open_data" WHERE year = '2018' and month = '01' and day = '10';** and click **Run Query**.
 
+We can see that this query scanned about 72 MB of data to get the results. Now let's see what happens when we run the same query without using the partitioning information.
+
+### Querying without using partitioning
+
+1.  Click the **+** sign next to New Query 1 tab to open a new query sub-window.
+1.  In the New Query 2 sub-window, let us type **SELECT * FROM "gdeltdb"."yournamehere_gdelt_open_data" WHERE yearmonthday = 20180110;** and click **Run Query**.
+
+We can see that this query scanned about 1.41 GB of data to get the results. This is because it had to read the entire dataset to determine the records that match the date mentioned in the query.
