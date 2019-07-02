@@ -88,7 +88,7 @@ We will use [AWS::Glue::Crawler](https://docs.aws.amazon.com/AWSCloudFormation/l
 
 ## Deploying the Crawler using CloudFormation
 
-We will now deploy the crawler. We will navigate to the folder where we downloaded the CloudFormation template and execute the below. Please note that your CLI credentials will require permission to deploy CloudFormation templates. For this demo session, I recommend using the AWS-managed AdministratorAccess policy.
+Let us now deploy the crawler. We will navigate to the folder where we downloaded the CloudFormation template and execute the below. Please note that your CLI credentials will require permission to deploy CloudFormation templates. For this demo session, I recommend using the AWS-managed AdministratorAccess policy.
 ```
 aws cloudformation deploy --template-file glue_crawler_gdelt.json --stack-name gdelt-crawler-stack --capabilities CAPABILITY_NAMED_IAM --parameter-overrides ParmGDELTBucket=${<yournamehere>-gdelt-open-data} --region us-east-1
 ```
