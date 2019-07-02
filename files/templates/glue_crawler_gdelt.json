@@ -1,5 +1,10 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
+    "Parameters": {
+        "ParmGDELTBucket": {
+            "Type": "String"
+        }
+    },
     "Resources": {
         "GDELTClassifier": {
             "Type": "AWS::Glue::Classifier",
@@ -7,7 +12,7 @@
                 "CsvClassifier": {
                     "Name": "classifier-gdelt-csv",
                     "Delimiter": "\t",
-                    "QuoteSymbol":"\"",
+                    "QuoteSymbol": "\"",
                     "ContainsHeader": "ABSENT",
                     "Header": [
                         "globaleventid",
@@ -73,6 +78,77 @@
                     "AllowSingleColumn": false
                 }
             }
+        },
+        "GDELTDatabase": {
+            "Type": "AWS::Glue::Database",
+            "Properties": {
+                "CatalogId": {
+                    "Ref": "AWS::AccountId"
+                },
+                "DatabaseInput": {
+                    "Name": "gdeltdb"
+                }
+            }
+        },
+        "GDELTCrawlerRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "glue.amazonaws.com"
+                                ]
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
+                            ]
+                        }
+                    ]
+                },
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole",
+                    "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
+                ],
+                "RoleName": "gdelt_crawler_role"
+            }
+        },
+        "GDELTCrawler": {
+            "Type": "AWS::Glue::Crawler",
+            "Properties": {
+                "Name": "gdelt-crawler",
+                "Role": {
+                    "Fn::GetAtt": [
+                        "GDELTCrawlerRole",
+                        "Arn"
+                    ]
+                },
+                "DatabaseName": {
+                    "Ref": "GDELTDatabase"
+                },
+                "Classifiers": [
+                    {
+                        "Ref": "GDELTClassifier"
+                    }
+                ],
+                "Targets": {
+                    "S3Targets": [
+                        {
+                            "Path": {
+                                "Ref": "ParmGDELTBucket"
+                            }
+                        }
+                    ]
+                }
+            },
+            "DependsOn": [
+                "GDELTCrawlerRole",
+                "GDELTDatabase",
+                "GDELTClassifier"
+            ]
         }
     }
 }
