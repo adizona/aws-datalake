@@ -38,10 +38,22 @@ For our example, we will define a Custom classifier so that we can provide the c
 
 We will use [AWS::Glue::Classifier](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-classifier.html) resource type to define our CSV classifier. Let's configure the [CsvClassifier](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-classifier-csvclassifier.html) object.
 
-1.  **Name:** A unique name for our classifier. We will use **classifier-gdelt-csv**.
-1.  **Delimiter:** We will use **\t**. This will indicate that the columns in the data are tab-delimited.
-1.  **QuoteSymbol:** We will use **"** (Double Quotes).
+1.  **Name:** A unique name for our classifier. We will use *classifier-gdelt-csv*.
+1.  **Delimiter:** We will use *\t*. This will indicate that the columns in the data are tab-delimited.
+1.  **QuoteSymbol:** We will use *"* (Double Quotes).
 1.  **ContainsHeader:** We will use "ABSENT" and define our own.
 1.  **Header:** We will use this field to define an array of column names defined by GDELT [here](http://data.gdeltproject.org/documentation/GDELT-Data_Format_Codebook.pdf). The only caveat here is that the column names used here must be unique and must not conflict with the partition names. The partition names we defined in the previous article are year, month and day. For this reason, we will use yearmonthday, yearmonth and yearonly as the column names for the different date fields to avoid conflict.
 1.  **DisableValueTrimming:** We will use **true**.
 1.  **AllowSingleColumn:** We will use **false**.
+
+### AWS Glue Database
+
+When we create a metadata table (with a crawler or manually), we add it to a database. A database is used to organize tables in AWS Glue Data Catalog. A table can be in only one database at a time.
+
+#### Define a Glue database resource
+
+We will use [AWS::Glue::Database](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-database.html) resource type to define our Glue database.
+
+1.  **CatalogId:** The AWS account ID for the account in which to create the catalog object. We will use the Ref intrinsic function with the AWS::AccountId pseudo parameter.
+1.  **DatabaseInput:** The metadata for the database. We will use the [DatabaseInput](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-database-databaseinput.html) object.
+    1. **Name:** A unique name for the database. We will use *gdeltdb*.
