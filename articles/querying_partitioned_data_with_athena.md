@@ -9,3 +9,5 @@ For more information on Amazon Athena, please visit [here](https://docs.aws.amaz
 # Accessing the Glue Data Catalog
 
 When AWS Glue creates a table, it registers it in its own AWS Glue Data Catalog. Athena uses the AWS Glue Data Catalog to store and retrieve this metadata, using it when we run queries to analyze the underlying dataset.
+
+For more information on this and to know more about Athena's way of handling tables, databases and its own internal data catalog, please visit [here](https://docs.aws.amazon.com/athena/latest/ug/understanding-tables-databases-and-the-data-catalog.html).
