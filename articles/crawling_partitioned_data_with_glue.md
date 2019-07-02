@@ -68,4 +68,27 @@ We will use [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/lates
 
 1.  **AssumeRolePolicyDocument:** The json object containing information about what process will be assuming the role.
 1.  **ManagedPolicyArns:** A list of AWS-managed policy ARNs that will be assigned to the role. We will use the **AWSGlueServiceRole** and **AmazonS3ReadOnlyAccess** policies.
-1.  **RoleName** A unique name for the role. We will use **gdelt_crawler_role**.
+1.  **RoleName:** A unique name for the role. We will use **gdelt_crawler_role**.
+
+### AWS Glue Crawler
+
+Now that we have all our supporting pieces, let's define our crawler.
+
+#### Define a Glue crawler resource
+
+We will use [AWS::Glue::Crawler](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-crawler.html) resource type to define our Glue crawler.
+
+1.  **Name:** A unique name for our crawler. We will use **gdelt-crawler**.
+1.  **Role:** We will use intrinsic function to get the ARN of the role we defined in the same template.
+1.  **DatabaseName:** We will use intrinsic function to get the reference of the database we defined in the same template.
+1.  **Classifiers:** This field takes an array. We will just populate the array with one element using intrinsic function to get the reference of the classifier we defined in the same template.
+1.  **Targets:** A collection of targets to crawl. We will use the [Targets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-crawler-targets.html) object.
+    1.  **S3Targets:** Specifies Amazon S3 targets. This field takes an array. We will just populate one element using the [S3Targets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-crawler-s3target.html).
+        1.  **Path:** The path to the Amazon S3 target. We will use our S3 bucket name here that we will provide as a stack parameter.
+
+## Deploying the Crawler using CloudFormation
+
+We will now deploy the crawler. We will navigate to the folder where we downloaded the CloudFormation template and execute the below. Please note that your CLI credentials will require permission to deploy CloudFormation templates. For this demo session, I recommend using the AWS-managed AdministratorAccess policy.
+```
+aws cloudformation deploy --template-file glue_crawler_gdelt.json --stack-name gdelt-crawler-stack --capabilities CAPABILITY_NAMED_IAM --parameter-overrides ParmGDELTBucket=${<yournamehere>-gdelt-open-data} --region us-east-1
+```
