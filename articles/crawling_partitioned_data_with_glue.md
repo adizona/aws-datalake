@@ -86,9 +86,29 @@ We will use [AWS::Glue::Crawler](https://docs.aws.amazon.com/AWSCloudFormation/l
     1.  **S3Targets:** Specifies Amazon S3 targets. This field takes an array. We will just populate one element using the [S3Targets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-crawler-s3target.html).
         1.  **Path:** The path to the Amazon S3 target. We will use our S3 bucket name here that we will provide as a stack parameter.
 
-## Deploying the Crawler using CloudFormation
+## Deploying the Crawler using CloudFormation template
 
 Let us now deploy the crawler. We will navigate to the folder where we downloaded the CloudFormation template and execute the below. Please note that your CLI credentials will require permission to deploy CloudFormation templates. For this demo session, I recommend using the AWS-managed AdministratorAccess policy.
 ```
 aws cloudformation deploy --template-file glue_crawler_gdelt.json --stack-name gdelt-crawler-stack --capabilities CAPABILITY_NAMED_IAM --parameter-overrides ParmGDELTBucket=${<yournamehere>-gdelt-open-data} --region us-east-1
 ```
+
+### Executing the Crawler
+
+Let us now start the crawler. Please note that your CLI credentials will require the necessary Glue permissions to do this. For this demo session, I recommend using the AWS-managed AdministratorAccess policy.
+
+```
+aws glue start-crawler --name gdelt-crawler --region us-east-1
+```
+
+### Monitoring the Crawler status
+
+We can check the status of our crawler by executing the following
+
+```
+aws glue get-crawler-metrics --crawler-name-list gdelt-crawler --region us-east-1
+```
+
+You 
+
+Next, we will learn how to take advantage of these partitions while running queries on the dataset using Amazon Athena.
