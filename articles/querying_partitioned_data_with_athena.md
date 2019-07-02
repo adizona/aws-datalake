@@ -6,7 +6,7 @@ Amazon Athena is an interactive query service that makes it easy to analyze data
 
 For more information on Amazon Athena, please visit [here](https://docs.aws.amazon.com/athena/latest/ug/what-is.html).
 
-# Accessing the Glue Data Catalog
+## Accessing the Glue Data Catalog
 
 When AWS Glue creates a table, it registers it in its own AWS Glue Data Catalog. Athena uses the AWS Glue Data Catalog to store and retrieve this metadata, using it when we run queries to analyze the underlying dataset.
 
