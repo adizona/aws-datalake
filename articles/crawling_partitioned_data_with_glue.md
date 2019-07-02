@@ -116,7 +116,7 @@ We can use the State field in the returned Crawler object to determine the statu
 
 After the crawler is done, we can check to see if the partitions have been detected. Let's execute the following.
 ```
-aws glue get-partitions --database-name gdeltdb --table-name adizon_gdelt_open_data --region us-east-1
+aws glue get-partitions --database-name gdeltdb --table-name <yournamehere>_gdelt_open_data --region us-east-1
 ```
 We should see a Partitions object returned which contains an array of objects where each object represents a partition. The Values array within each partition object indicates the three identifiers for that partition. This verifies that the Glue crawler successfully detected our partitioned data.
 

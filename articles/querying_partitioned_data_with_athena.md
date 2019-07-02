@@ -11,3 +11,19 @@ For more information on Amazon Athena, please visit [here](https://docs.aws.amaz
 When AWS Glue creates a table, it registers it in its own AWS Glue Data Catalog. Athena uses the AWS Glue Data Catalog to store and retrieve this metadata, using it when we run queries to analyze the underlying dataset.
 
 For more information on this and to know more about Athena's way of handling tables, databases and its own internal data catalog, please visit [here](https://docs.aws.amazon.com/athena/latest/ug/understanding-tables-databases-and-the-data-catalog.html).
+
+## Querying GDELT Data
+
+Let us get started.
+
+### Opening the Amazon Athena console
+
+1.  After signing in to the AWS console, verify that we are in us-east-1 by using the region menu on the top right and clicking **US East (N. Virginia)**.
+1.  We start by clicking the **Services** menu on the top-left. 
+1.  Under **Analytics**, let us click **Athena**.
+1.  This should take us to the **Query Editor**. If not, we can do so by clicking **Query Editor** on the sub-menu on the top-left.
+
+### Running our first query against the partitioned data
+
+1.  On the left, let us select gdeltdb as the Database. This should show us the table (<yournamehere>_gdelt_open_data) that the Glue crawler created.
+1.  In the New Query 1 sub-window, let us type **SELECT * FROM "gdeltdb"."adizon_gdelt_open_data" WHERE year = '2018' and month = '01' and day = '10';** and click **Run Query**.
