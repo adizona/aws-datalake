@@ -1,0 +1,1 @@
+# Querying Partitioned Data With Athena

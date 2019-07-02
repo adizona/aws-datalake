@@ -90,7 +90,7 @@ We will use [AWS::Glue::Crawler](https://docs.aws.amazon.com/AWSCloudFormation/l
 
 Let us now deploy the crawler. We will navigate to the folder where we downloaded the CloudFormation template and execute the below. Please note that your CLI credentials will require permission to deploy CloudFormation templates. For this demo session, I recommend using the AWS-managed AdministratorAccess policy.
 ```
-aws cloudformation deploy --template-file glue_crawler_gdelt.json --stack-name gdelt-crawler-stack --capabilities CAPABILITY_NAMED_IAM --parameter-overrides ParmGDELTBucket=${<yournamehere>-gdelt-open-data} --region us-east-1
+aws cloudformation deploy --template-file glue_crawler_gdelt.json --stack-name gdelt-crawler-stack --capabilities CAPABILITY_NAMED_IAM --parameter-overrides ParmGDELTBucket=<yournamehere>-gdelt-open-data --region us-east-1
 ```
 
 ### Executing the Crawler
@@ -105,7 +105,7 @@ aws glue start-crawler --name gdelt-crawler --region us-east-1
 
 We can check the status of our crawler by executing the following.
 ```
-aws glue get-crawler --name gdelt-crawler
+aws glue get-crawler --name gdelt-crawler --region us-east-1
 ```
 We can use the State field in the returned Crawler object to determine the status. The expected values are the following:
 1.  **READY:** The crawler is currently not executing but ready to be started.
