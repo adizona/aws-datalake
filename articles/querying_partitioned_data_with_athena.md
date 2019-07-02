@@ -35,4 +35,6 @@ We can see that this query scanned about 72 MB of data to get the results. Now l
 1.  Let's click the **+** sign next to New Query 1 tab to open a new query sub-window.
 1.  In the New Query 2 sub-window, let us type **SELECT * FROM "gdeltdb"."yournamehere_gdelt_open_data" WHERE yearmonthday = 20180110;** and click **Run Query**.
 
-We can see that this query scanned about 1.41 GB of data to get the results. This is because it had to read the entire dataset to determine the records that match the date mentioned in the query.
+We can see that this query scanned about 1.41 GB of data to get the results. This is because it had to read the entire dataset to determine the records that match the date mentioned in the query. 
+
+This shows the importance of partitioning while writing data to a data lake.
