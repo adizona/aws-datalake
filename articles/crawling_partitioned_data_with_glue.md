@@ -112,6 +112,14 @@ We can use the State field in the returned Crawler object to determine the statu
 1.  **RUNNING:** The crawler is currently executing.
 1.  **STOPPING:** The crawler has finished crawling the data and is in the process of wrapping things up.
 
+### Verifying the Paritions
+
+After the crawler is done, we can check to see if the partitions have been detected. Let's execute the following.
+```
+aws glue get-partitions --database-name gdeltdb --table-name adizon_gdelt_open_data --region us-east-1
+```
+We should see a Partitions object returned which contains an array of objects where each object represents a partition. The Values array within each partition object indicates the three identifiers for that partition.
+
 ## Next Steps
 
 [Next](querying_partitioned_data_with_athena.md), we will learn how to take advantage of these partitions while running queries on the dataset using Amazon Athena.
