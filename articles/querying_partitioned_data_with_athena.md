@@ -23,7 +23,7 @@ Let us get started.
 1.  Under **Analytics**, let us click **Athena**.
 1.  This should take us to the **Query Editor**. If not, we can do so by clicking **Query Editor** on the sub-menu on the top-left.
 
-### Running our first query against the partitioned data
+### Running our first query against partitioned data
 
 1.  On the left, let us select gdeltdb as the Database. This should show us the table (yournamehere_gdelt_open_data) that the Glue crawler created.
 1.  In the New Query 1 sub-window, let us type **SELECT * FROM "gdeltdb"."yournamehere_gdelt_open_data" WHERE year = '2018' and month = '01' and day = '10';** and click **Run Query**.
