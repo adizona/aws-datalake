@@ -57,3 +57,15 @@ We will use [AWS::Glue::Database](https://docs.aws.amazon.com/AWSCloudFormation/
 1.  **CatalogId:** The AWS account ID for the account in which to create the catalog object. We will use the Ref intrinsic function with the AWS::AccountId pseudo parameter.
 1.  **DatabaseInput:** The metadata for the database. We will use the [DatabaseInput](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-database-databaseinput.html) object.
     1. **Name:** A unique name for the database. We will use **gdeltdb**.
+
+### AWS IAM Role
+
+Since our crawler needs to perform certain operations such as reading data from our S3 bucket, we need to create an IAM role with the necessary permissions and assign it to the crawler.
+
+#### Define an IAM Role
+
+We will use [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html) resource type to define the role for our crawler.
+
+1.  **AssumeRolePolicyDocument:** The json object containing information about what process will be assuming the role.
+1.  **ManagedPolicyArns:** A list of AWS-managed policy ARNs that will be assigned to the role. We will use the **AWSGlueServiceRole** and **AmazonS3ReadOnlyAccess** policies.
+1.  **RoleName** A unique name for the role. We will use **gdelt_crawler_role**.
