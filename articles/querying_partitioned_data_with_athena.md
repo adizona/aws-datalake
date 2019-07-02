@@ -26,4 +26,5 @@ Let us get started.
 ### Running our first query against the partitioned data
 
 1.  On the left, let us select gdeltdb as the Database. This should show us the table (<yournamehere>_gdelt_open_data) that the Glue crawler created.
-1.  In the New Query 1 sub-window, let us type **SELECT * FROM "gdeltdb"."adizon_gdelt_open_data" WHERE year = '2018' and month = '01' and day = '10';** and click **Run Query**.
+1.  In the New Query 1 sub-window, let us type **SELECT * FROM "gdeltdb"."yournamehere_gdelt_open_data" WHERE year = '2018' and month = '01' and day = '10';** and click **Run Query**.
+
