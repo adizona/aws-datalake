@@ -140,4 +140,6 @@ Year | Month | Day
 2019 | June | 10
 2019 | June | 21
 
+## Next Steps
+
 Next, we will learn how to crawl the data we copied to our very own data lake using AWS Glue.

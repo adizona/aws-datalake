@@ -103,12 +103,12 @@ aws glue start-crawler --name gdelt-crawler --region us-east-1
 
 ### Monitoring the Crawler status
 
-We can check the status of our crawler by executing the following
-
+We can check the status of our crawler by executing the following.
 ```
-aws glue get-crawler-metrics --crawler-name-list gdelt-crawler --region us-east-1
+aws glue get-crawler --name gdelt-crawler
 ```
+We can use the State field in the returned Crawler object to determine the status.
 
-You 
+## Next Steps
 
 Next, we will learn how to take advantage of these partitions while running queries on the dataset using Amazon Athena.
